@@ -1,7 +1,9 @@
 import React from 'react';
-import { SafeAreaView, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { SafeAreaView, Text, Image, StyleSheet, TouchableOpacity, Dimensions, View } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import warteringImg from '../assets/watering.png';
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 const styles = StyleSheet.create({
     container: {
@@ -9,21 +11,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around'
     },
+    wrapper: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: 20,
+    },
     title: {
         fontSize: 32,
-        fontWeight: 'bold',
         textAlign: 'center',
         lineHeight: 38,
-        fontStyle: 'normal',
-        fontFamily: 'Jost',
+        marginTop: 38,
+        fontFamily: fonts.heading,
         color: colors.heading
     },
     subTitle: {
         fontSize: 17,
-        fontWeight: 'normal',
-        fontStyle: 'normal',
         lineHeight: 25,
         textAlign: 'center',
+        fontFamily: fonts.complement,
         color: colors.body_dark
     },
     image: {
@@ -38,27 +44,30 @@ const styles = StyleSheet.create({
         height: 56,
         width: 56,
     },
-    buttonTitle: {
+    buttonIcon: {
         color: colors.white,
-        fontSize: 24,
+        fontSize: 32,
     }
 })
 
 export function Welcome() {
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>Gerencie {'\n'}suas plantas de {'\n'}forma fácil</Text>
-            <Image source={warteringImg} style={styles.image} resizeMode="contain"/>
-            <Text style={styles.subTitle}> Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
-                sempre que precisar.</Text>
-            <TouchableOpacity
-                style={styles.button}
-                activeOpacity={0.6}
-            >
-                <Text style={styles.buttonTitle}>
-                    {'>'}
+            <View style={styles.wrapper}>
+                <Text style={styles.title}>Gerencie {'\n'}suas plantas de {'\n'} forma fácil</Text>
+                <Image source={warteringImg} style={styles.image} resizeMode="contain" />
+                <Text style={styles.subTitle}>
+                    Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
+                    sempre que precisar.{'\n'}
                 </Text>
-            </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.button}
+                    activeOpacity={0.6}
+                >
+                    <MaterialIcons name="chevron-right" style={styles.buttonIcon} />
+                </TouchableOpacity>
+            </View>
+
 
         </SafeAreaView>
     )
