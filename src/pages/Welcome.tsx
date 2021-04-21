@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export function Welcome() {
+export default function Welcome() {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.wrapper}>
