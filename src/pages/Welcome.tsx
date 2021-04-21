@@ -4,6 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import warteringImg from '../assets/watering.png';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { useNavigation } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
     container: {
@@ -51,6 +52,12 @@ const styles = StyleSheet.create({
 })
 
 export default function Welcome() {
+    const navigation = useNavigation();
+
+    function handleStart() {
+        navigation.navigate('UserIdetification')
+
+    }
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.wrapper}>
@@ -63,6 +70,7 @@ export default function Welcome() {
                 <TouchableOpacity
                     style={styles.button}
                     activeOpacity={0.6}
+                    onPress={handleStart}
                 >
                     <MaterialIcons name="chevron-right" style={styles.buttonIcon} />
                 </TouchableOpacity>
