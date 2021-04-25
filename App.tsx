@@ -4,6 +4,7 @@ import { useFonts, Jost_400Regular, Jost_600SemiBold } from '@expo-google-fonts/
 import AppLoading from 'expo-app-loading';
 import Routes from './src/routes';
 import { PlantProps } from './src/libs/storage';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -41,6 +42,9 @@ export default function App() {
 
   if (!fontsLoaded) return <AppLoading />
   return (
-    <Routes />
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
+
   );
 }
