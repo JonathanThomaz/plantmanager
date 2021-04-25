@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button } from '../components/Button';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -57,7 +58,11 @@ export default function UserIdentification() {
     const [name, setName] = useState<string>();
     const navigation = useNavigation();
 
-    function handleSubmit() {
+    async function handleSubmit() {
+        if (!name)
+            return Alert.alert('Me diz seu nome poxa')
+
+        await AsyncStorage.setItem('@plantmanager:user', name);
         navigation.navigate('Confirmation')
 
     }
