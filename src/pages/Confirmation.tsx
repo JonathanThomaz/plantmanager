@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
     StyleSheet,
@@ -44,6 +45,11 @@ const styles = StyleSheet.create({
 });
 
 export default function Confirmation() {
+    const navigation = useNavigation();
+
+    function handleMoveOn(){
+        navigation.navigate('PlantSelect')
+    }
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
@@ -57,7 +63,7 @@ export default function Confirmation() {
                     Agora vamos começar a cuidar das suas {'\n'}plantinhas com muito cuidado.
                 </Text>
 
-                <Button title="Começar" />
+                <Button title="Começar" onPress={handleMoveOn}/>
 
 
             </View>
